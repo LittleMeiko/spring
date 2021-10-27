@@ -56,4 +56,66 @@
 		  <constructor-arg ref="car"></constructor-arg>
 		  <property name="car.maxSpeed" value="280"></property>
 	</bean>
+	
+	<!-- 为List属性赋值 -->
+	<bean id="person3" class="com.atguigu.spring.beans.collections.Person">
+		<property name="name" value="Mike"></property>
+		<property name="age" value="27"></property>
+		<property name="cars">
+			<list>
+				<ref bean="car" />
+				<ref bean="car2" />
+				<bean class="com.atguigu.spring.beans.Car">
+					<constructor-arg value="BenTian" index="0"></constructor-arg>
+					<constructor-arg value="Wuhan" index="1"></constructor-arg>
+					<constructor-arg value="200000" type="double"></constructor-arg>
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- 为Map属性赋值  -->
+	<bean id="newPerson" class="com.atguigu.spring.beans.collections.NewPerson">
+		<property name="name" value="Rose"></property>
+		<property name="age" value="28"></property>
+		<property name="cars">
+			<map>
+				<entry key="AA" value-ref="car"></entry>
+				<entry key="BB" value-ref="car2"></entry>
+			</map>
+		</property>
+	</bean>
+	
+	<!-- 为Properties属性赋值 -->
+	<bean id="dataSource" class="com.atguigu.spring.beans.collections.DataSource">
+		<property name="properties">
+			<props>
+				<prop key="username">root</prop>
+				<prop key="password">1234</prop>
+				<prop key="jdbcUrl">jdbc:mysql://test</prop>
+				<prop key="driverClass">com.mysql.jdbc.Driver</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<!-- 将集合独立成独立的bean方便其它bean引用 -->
+	<!-- 
+		<util:list id="cars">
+			<list>
+				<ref bean="car"/>
+				<ref bean="car2"/>
+			</list>
+		</util:list>
+		
+		<bean id="person4" class="com.atguigu.spring.beans.collections.Person">
+			<property name="name" value="Tom"></property>
+			<property name="age" value="29"></property>
+			<property name="cars" ref="cars"/>
+		</bean>
+	 -->
+	 
+	 <!-- 通过p命名空间为bean的属性赋值 -->
+	 <!-- 
+	 	<bean id="person5" class="com.atguigu.spring.beans.collections.Person" p:name="Quen" p:age="30" p:cars-ref="cars"></bean>
+	  -->
 </beans>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean id="address" class="com.atguigu.spring.beans.autowire.Address">
+		<property name="city" value="ShenZhen"></property>
+		<property name="street" value="BanTian"></property>
+	</bean>
+	
+	<bean id="car2" class="com.atguigu.spring.beans.autowire.Car">
+		<property name="brand" value="audi"></property>
+		<property name="price" value="300000"></property>
+	</bean>
+	
+	<!-- 
+		配置autowire属性来指定自动装配的方式 -
+			byType:根据类型自动装配
+			byName:根据名称自动装配
+	->
+	<bean id="person" class="com.atguigu.spring.beans.autowire.Person" autowire="byType">
+		<property name="name" value="Tom"></property>
+	</bean>
+</beans>

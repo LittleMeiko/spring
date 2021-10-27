@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- 抽象bean：使用bean的abstract属性可将此bean作为配置模板 -->
+	<bean id="address" abstract="true">
+		<property name="city" value="ShenZhen^"></property>
+		<property name="street" value="LuoHu"></property>
+	</bean>
+	
+	<!-- 使用bean的parent属性实现配置的继承 -->
+	<bean id="address2" class="com.atguigu.spring.beans.autowire.Address" parent="address">
+		<property name="city" value="ShenZhen"></property>
+		<property name="street" value="LongGang"></property>
+	</bean>
+	
+	<bean id="car" class="com.atguigu.spring.beans.autowire.Car">
+		<property name="brand" value="Audi"></property>
+		<property name="price" value="300000"></property>
+	</bean>
+	
+	<!-- 通过bean的depends-on属性可实现要求在配置Person时必须有一个相关联的car -->
+	<bean id="person" class="com.atguigu.spring.beans.autowire.Person" depends-on="car">
+		<property name="name" value="Tom"></property>
+		<property name="address" ref="address2"></property>
+	</bean>
+</beans>
