@@ -2,11 +2,16 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-
+	
+	<!-- 结合el表达式使用外部的属性配置文件 -->
+	<!-- 
+		<context:property-placeholder location="classpath:db.properties" />
+	 -->
+	
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
 		<property name="user" value="root"></property>
 		<property name="password" value="1234"></property>
-		<property name="user" value="root"></property>
-		<property name="user" value="root"></property>
+		<property name="driverClass" value="com.mysql.cj.jdbc.Driver"></property>
+		<property name="jdbcUrl" value="jdbc:mysql:///test"></property>
 	</bean>
 </beans>

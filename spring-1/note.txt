@@ -12,3 +12,15 @@ bean的配置方式：全类名、工厂方法(静态、实例)、FactoryBean
 	1.byType:根据类型自动装配
 	2.byName:根据名称自动装配
 	3.constructor:通过构造器自动装配
+	
+SpEL：spring的el表达式，#{...}，为bean属性进行动态赋值提供了便利
+
+IOC容器对Bean的生命周期管理的过程：
+	1.通过构造器或工厂方法创建Bean实例
+	2.为Bean的属性设置值和对其它Bean的引用
+	3.调用Bean的初始化方法  init-method
+	4.Bean可以使用了
+	5.当容器关闭时调用Bean的销毁方法 destory-method
+	
+Bean后置处理器：允许在调用bean的初始化方法前后对bean进行额外的处理，bean后置处理器对IOC容器里所有Bean实例进行逐一处理而非单一实例
+			implements interface BeanPostProcessor: postProcessAfterInitialization(){...},postProcessBeforeInitialization(){...}
