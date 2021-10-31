@@ -24,4 +24,10 @@ public class Car {
 	public void destory() {
 		System.out.println("Car's destory...");
 	}
+
+	@Override
+	public String toString() {
+		return "Car [brand=" + brand + "]";
+	}
+	
 }
