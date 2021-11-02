@@ -6,7 +6,7 @@ DI(Dependency Injection):依赖注入，IOC的另一种表述形式。组件以一些预先定义好的方
 			--ClassPathXmlApplicationContext:从类路径下加载配置文件
 			--FileSystemXmlApplicationContext:从文件系统中加载配置文件
 bean的配置方式：全类名、工厂方法(静态、实例)、FactoryBean
-依赖注入的三种方式：属性注入、构造方法注入、工厂方法注入
+依赖注入的三种方式：属性注入、构造方法注入、基于注解注入(@Autowired、@Resource、@Inject)
 
 自动装配：
 	1.byType:根据类型自动装配

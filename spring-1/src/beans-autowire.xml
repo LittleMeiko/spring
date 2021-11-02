@@ -13,11 +13,7 @@
 		<property name="price" value="300000"></property>
 	</bean>
 	
-	<!-- 
-		配置autowire属性来指定自动装配的方式 -
-			byType:根据类型自动装配
-			byName:根据名称自动装配
-	->
+	<!-- 配置autowire属性来指定自动装配的方式 byType:根据类型自动装配 byName:根据名称自动装配 -->
 	<bean id="person" class="com.atguigu.spring.beans.autowire.Person" autowire="byType">
 		<property name="name" value="Tom"></property>
 	</bean>
