@@ -26,3 +26,11 @@ IOC容器对Bean的生命周期管理的过程：
 	
 Bean后置处理器：允许在调用bean的初始化方法前后对bean进行额外的处理，bean后置处理器对IOC容器里所有Bean实例进行逐一处理而非单一实例
 			implements interface BeanPostProcessor: postProcessAfterInitialization(){...},postProcessBeforeInitialization(){...}
+			
+基于注解配置bean：@Component @Repository @Service @Controller
+			  <context:componetn-scan base-package="" resource-pattern=""> <context:include-filter> <context:exclude-filter>
+			  自动注册AutowiredAnnotationBeanPostProcessor实例，自动装配具有
+			  	@Autowird:属性(即使是非public)、构造器、具有参数的方法 
+			  	@Resource 
+			  	@Inject
+			  注解的属性
