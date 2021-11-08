@@ -3,6 +3,7 @@ package com.atguigu.spring.aop.helloworld;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
+import java.security.KeyStore.Entry;
 import java.util.Arrays;
 
 /**
@@ -37,10 +38,21 @@ public class ArithmeticCaculatorLoggingProxy {
 			 */
 			@Override
 			public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+				Object result = null;
 				String methodName = method.getName();
-				System.out.println("Atguigu->The method " + methodName + " begins with " + Arrays.asList(args));
-				Object result = method.invoke(target, args);
-				System.out.println("Atguigu->The method " + methodName + " ends with " + result);
+				try {
+					//前置通知
+					System.out.println("Atguigu->The method " + methodName + " begins with " + Arrays.asList(args));
+					result = method.invoke(target, args);
+					//返回通知
+					System.out.println("Atguigu->The method " + methodName + " ends with " + result);
+				} catch (Exception e) {
+					//异常通知
+					System.out.println("The method " + methodName + " occured exception:" + e);
+				}
+				//后置通知
+				System.out.println("The method " + methodName + " ends");
+								
 				return result;
 			}
 		};
