@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class ValidateAspect {
 
-	@Before("execution(public int com.atguigu.spring.aop.ArithmeticCaculatorImpl.*(..))")
+	@Before("com.atguigu.spring.aop.LoggingAspect.declareJoinpointExpression()")
 	public void validateArgs(JoinPoint joinPoint) {
 		System.out.println("Validate:" + Arrays.asList(joinPoint.getArgs()));
 	}
