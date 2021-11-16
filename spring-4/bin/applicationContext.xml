@@ -2,10 +2,12 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
 	
-	<context:component-scan base-package="com.atguigu.spring.jdbc"/>
+	<context:component-scan base-package="com.atguigu.spring"/>
 	
 	<!-- 导入外部的属性文件 -->
 	<context:property-placeholder location="classpath:db.properties"/>
@@ -29,4 +31,12 @@
 	<bean id="namedParameterJdbcTemplate" class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate"> 
 		<constructor-arg ref="dataSource"></constructor-arg>
 	</bean>
+	
+	<!-- 不论是编程式事务还是声明式事务都需配置事务管理器 -->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	
+	<!-- 让事务注解生效 -->
+	<tx:annotation-driven transaction-manager="transactionManager"/>
 </beans>
